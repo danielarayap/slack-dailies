@@ -37,6 +37,10 @@ def message(payload):
     if BOT_ID != user_id:
         client.chat_postMessage(channel=channel_id, text=text)
 
+@app.route('/')
+def home():
+    return Response(), 200
+
 @app.route('/daily', methods=['POST'])
 def daily():
     data = request.form
