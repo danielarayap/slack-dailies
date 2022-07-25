@@ -14,7 +14,7 @@ env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 locale.setlocale(locale.LC_TIME, '')
 client = slack.WebClient(token=os.environ['SLACK_TOKEN'])
-xlsx_file = 'Dailys_ Equipo TI Reservo_20220720.xlsx'
+xlsx_file = 'app/Dailys_ Equipo TI Reservo_20220720.xlsx'
 app = Flask(__name__)
 slack_events_adapter = SlackEventAdapter(
     os.environ['SIGNING_SECRET'], '/slack/events', app)
@@ -57,7 +57,7 @@ def daily():
         # print(lider_daily)
         # print(today.strftime('%d/%m/%Y'))
         if lider_daily != 'FERIADO':
-            msg = f"Hoy lidera {lider_daily} ({today.strftime('%A %d')})"
+            msg = f"Hoy lidera {lider_daily} la daily ({today.strftime('%A %d de %B')})"
             client.chat_postMessage(channel='#test', text=msg)
         # TODO: 3 casos segun hora: 
     return Response(), 200
