@@ -39,7 +39,7 @@ def message(payload):
 
 @app.route('/')
 def home():
-    return Response(), 200
+    return "<h1>Welcome to Geeks for Geeks</h1>"
 
 @app.route('/daily', methods=['POST'])
 def daily():
